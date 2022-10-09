@@ -1,7 +1,7 @@
 # Задача №1 - Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 def task1():
     print('Введите число')
-    number = int(input())
+    number = float(input())
     sum = 0
     print("Сумма цифр числа равна:")
     while number > 0:
@@ -27,31 +27,47 @@ task2()
 def task3():
     print('Введите число')
     num = int(input())
-    solution = (1+1/num)**num
-    solution2 = round(solution, 3)
-    print(solution2)
+    aray = [num]
+    counter = 1
+    current_value = 0
+    while counter <= num:
+        solution = (1+1/counter)**counter
+        current_value += solution
+        counter += 1
+    print(round(current_value, 3))
 task3()
 # Задача №4 -  Задайте список из N элементов, заполненных числами из промежутка [-N, N].Найдите произведение элементов на позициях a и b.Значения N, a и b вводит пользователь с клавиатуры.
 def task4():
     print('Введите Значение N')
     num = int(input())
-    numbers = [-num, num]
+    nums = []
     counter = -num
     while counter <= num:
-        print(counter, end=' ')
+        nums.append(counter)
         counter += 1
-    print(numbers)
-    print('Введите первое число')
+    print(nums)
+    print('Введите позицию первого элемента')
     num2 = int(input())
-    print('Введите второе число')
+    num2 -= 1
+    print('Введите позицию второго элемента')
     num3 = int(input())
-    print(num2 + num3)
+    num3 -= 1
+    print('Произвеление равно: ')
+    print(nums[num2] * nums[num3])
 task4()
 # Задача №5 - Реализуйте алгоритм перемешивания списка.
-def task5():
+def task5():   
     import random
 
-    value = ['лучше', 'иметь', 'и', 'не', 'нуждаться', 'чем', 'нуждаться', 'и', 'не', 'иметь']
-    random.shuffle(value)
+    number = random.randint(0 , 4)
+    value = [1, 2, 3, 4, 5]
+    temp = 0
+    counter = 0
+    print(value, end=' ')
+    while counter < 5:
+        temp = value[counter]
+        value[counter] = value[number]
+        value[number] = temp
+        counter += 1
     print(value, end=' ')
 task5()
